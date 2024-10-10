@@ -1,0 +1,38 @@
+{
+  "name": "tw-helper",
+  "version": "0.0.1",
+  "description": "A CLI tool providing useful helper functions for developers using Tailwind CSS",
+  "main": "cli.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "tw-helper": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsup src/cli.ts --minify",
+    "lint": "eslint --config .eslintrc.json .",
+    "format": "prettier --write .",
+    "dev": "npm run build && dist/cli.js",
+    "test": "test"
+  },
+  "keywords": [
+    "Tailwind",
+    "Tailwind CSS"
+  ],
+  "author": "Antti Romppanen",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.12.0",
+    "jsdoc": "^4.0.3",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "inquirer": "^12.0.0"
+  }
+}
