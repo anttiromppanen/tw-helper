@@ -1,7 +1,10 @@
 #!/bin/env node
 
-import { program } from "commander";
-import globalColors from "./commands/globalColors";
+import { Command } from "commander";
+import globalColorsCommand from "./commands/global-colors";
+import breakpointsCommand from "./commands/breakpoints";
+
+const program = new Command();
 
 function main() {
   program
@@ -11,12 +14,8 @@ function main() {
     )
     .version("0.0.1");
 
-  program
-    .command("global-colors")
-    .description("List all default global colors in Tailwind CSS")
-    .action(() => {
-      console.log(globalColors());
-    });
+  program.addCommand(globalColorsCommand);
+  program.addCommand(breakpointsCommand);
 
   program.parse();
 }
