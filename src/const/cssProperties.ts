@@ -65,6 +65,20 @@ export const cssPropertiesDict: Record<string, TailwindUrlAndClasses> = {
       "list-item",
     ],
   },
+  table: {
+    urlToDocs: "https://tailwindcss.com/docs/display#table",
+    classes: [
+      "table",
+      "table-caption",
+      "table-cell",
+      "table-column",
+      "table-column-group",
+      "table-footer-group",
+      "table-header-group",
+      "table-row-group",
+      "table-row",
+    ],
+  },
   float: {
     urlToDocs: "https://tailwindcss.com/docs/float",
     classes: [
