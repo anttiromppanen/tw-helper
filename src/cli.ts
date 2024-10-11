@@ -4,7 +4,7 @@ import { Command } from "commander";
 import breakpointsCommand from "./commands/breakpoints.command";
 import testCommand from "./commands/test.command";
 import cssCommand from "./commands/css.command";
-import twColorsCommand from "./commands/tw-colors.command";
+import colorsCommand from "./commands/colors.command";
 
 const program = new Command();
 
@@ -16,7 +16,7 @@ function main() {
     )
     .version("0.0.1");
 
-  program.addCommand(twColorsCommand);
+  program.addCommand(colorsCommand);
   program.addCommand(breakpointsCommand);
   program.addCommand(cssCommand);
   program.addCommand(testCommand);
