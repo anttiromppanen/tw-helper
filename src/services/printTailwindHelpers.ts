@@ -1,10 +1,16 @@
 import CliTable3 from "cli-table3";
-import { cssPropertiesDict } from "../const/cssProperties";
 import printHeader, { cssPropertyNotFoundText } from "../utils/textUtils";
 import chalk from "chalk";
+import { CSS_PROPERTIES_DICT } from "../const/cssProperties";
+
+/**
+ * Print Tailwind CSS helpers for a given CSS property
+ * @param cssProperty - CSS property to print Tailwind CSS helpers for
+ * @description Prints either a table of Tailwind CSS helpers or an error message
+ */
 
 export default function printTailwindHelpers(cssProperty: string) {
-  if (!cssPropertiesDict.hasOwnProperty(cssProperty)) {
+  if (!CSS_PROPERTIES_DICT.hasOwnProperty(cssProperty)) {
     cssPropertyNotFoundText();
     return;
   }
@@ -15,7 +21,7 @@ export default function printTailwindHelpers(cssProperty: string) {
     colWidths: [20, 50],
   });
 
-  const { urlToDocs, classes } = cssPropertiesDict[cssProperty];
+  const { urlToDocs, classes } = CSS_PROPERTIES_DICT[cssProperty];
 
   table.push(
     { Documentation: chalk.cyan(urlToDocs) },

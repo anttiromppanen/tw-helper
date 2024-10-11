@@ -9,7 +9,7 @@ interface TailwindUrlAndClasses {
  * @returns Returns the Tailwind helper class for css property
  */
 
-export const cssPropertiesDict: Record<string, TailwindUrlAndClasses> = {
+export const CSS_PROPERTIES_DICT: Record<string, TailwindUrlAndClasses> = {
   // Layout
   "aspect-ratio": {
     urlToDocs: "https://tailwindcss.com/docs/aspect-ratio",
