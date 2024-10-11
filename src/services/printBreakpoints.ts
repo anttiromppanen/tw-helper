@@ -1,8 +1,8 @@
 import { TAILWIND_DEFAULT_BREAKPOINTS } from "../const/tailwindBreakpoints";
 import CliTable3 from "cli-table3";
 import chalk from "chalk";
-import { readUserExtendObjectFromConfig } from "../utils/readUserConfig";
 import printHeader from "../utils/textUtils";
+import { readUserThemeObjectFromConfig } from "../utils/readUserConfig";
 
 /**
  * Combine two tables side by side with some space in between
@@ -55,7 +55,9 @@ function createTableFromBreakpointsArray(breakpoints: any) {
  */
 
 function createTables() {
-  const extendObject = readUserExtendObjectFromConfig();
+  const themeObject = readUserThemeObjectFromConfig();
+  const extendObject =
+    themeObject.hasOwnProperty("extend") && themeObject.extend;
   const hasScreensObject = extendObject.hasOwnProperty("screens");
 
   const defaultBreakpointsArray = Object.entries(TAILWIND_DEFAULT_BREAKPOINTS);

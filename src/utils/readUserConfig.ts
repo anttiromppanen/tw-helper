@@ -1,8 +1,11 @@
 const fs = require("fs");
 const vm = require("vm");
-import chalk from "chalk";
 import path from "path";
 import { errorText } from "./textUtils";
+import {
+  COMMON_CSS_FILES,
+  COMMON_GLOBAL_CSS_FILELOCATIONS,
+} from "../const/cssFileLocations";
 
 /**
  * Try to read config file from the given paths
@@ -31,7 +34,51 @@ export function readUserConfig(paths: string[], errorMessage: string) {
   }
 }
 
-export function readUserExtendObjectFromConfig() {
+/**
+ * Tries to locate a global CSS file in the project
+ * @param customPath - Custom path to the global CSS file (optional)
+ * @returns Returns the global CSS file in utf8 format or an error message
+ */
+
+export function readGlobalCssFileFromConfig(customPath?: string) {
+  // Check if a custom path is provided, and skip the rest if so
+  if (customPath) {
+    const cssGlobalFile = readUserConfig(
+      [customPath],
+      "Could not locate a global CSS file",
+    );
+
+    return cssGlobalFile;
+  }
+
+  // Create all possible combinations of locations and files
+  // Dummy way of finding the file, but works for now
+  function createCombinations(locations: string[], files: string[]) {
+    const combinations = [];
+
+    for (const location of locations) {
+      for (const file of files) {
+        combinations.push(location + file);
+      }
+    }
+
+    return combinations;
+  }
+
+  const allCombinations = createCombinations(
+    COMMON_GLOBAL_CSS_FILELOCATIONS,
+    COMMON_CSS_FILES,
+  );
+
+  const cssGlobalFile = readUserConfig(
+    allCombinations,
+    "Could not locate a global CSS file",
+  );
+
+  return cssGlobalFile;
+}
+
+export function readUserThemeObjectFromConfig() {
   const filePaths = [
     "tailwind.config.js",
     "tailwind.config.ts",
@@ -55,11 +102,11 @@ export function readUserExtendObjectFromConfig() {
   const tailwindConfig = sandbox.module.exports as any;
 
   // Extract the 'extend' object
-  if (tailwindConfig.theme && tailwindConfig.theme.extend) {
-    const extendObject = tailwindConfig.theme.extend;
+  if (tailwindConfig.theme) {
+    const themeObject = tailwindConfig.theme;
 
     // Do something with the extend object (e.g., return it or modify it)
-    return extendObject;
+    return themeObject;
   } else {
     return {};
   }

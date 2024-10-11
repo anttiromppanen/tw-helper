@@ -15,8 +15,6 @@ export default function printTailwindHelpers(cssProperty: string) {
     return;
   }
 
-  printHeader(`Tailwind CSS helpers for ${cssProperty}`);
-
   const table = new CliTable3({
     colWidths: [20, 50],
   });
@@ -25,9 +23,10 @@ export default function printTailwindHelpers(cssProperty: string) {
 
   table.push(
     { Documentation: chalk.cyan(urlToDocs) },
-    { Classes: chalk.white(classes.join("\n")) },
+    { Classes: chalk.gray(classes.join("\n")) },
   );
 
+  console.log("");
   console.log(table.toString());
   console.log("");
 }
