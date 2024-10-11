@@ -7,7 +7,7 @@ import printHeader from "../utils/textUtils";
  * Print all global colors in Tailwind CSS in a table format
  */
 
-export default function printGlobalColors() {
+export default function printTailwindColors() {
   const nameAndColors = Object.entries(TAILWIND_COLORS_100_TO_900);
 
   printHeader(
@@ -25,11 +25,11 @@ export default function printGlobalColors() {
     });
 
     // Create a string of colored blocks
-    const redColorsString = shadesArray
+    const colorsString = shadesArray
       .map((rgb) => `${chalk.bgHex(rgb)("  ")}`)
       .join(" ");
 
-    table.push([redColorsString]);
+    table.push([colorsString]);
 
     // Render the table
     console.log(table.toString());
