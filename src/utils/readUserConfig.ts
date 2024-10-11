@@ -31,6 +31,7 @@ export function readUserConfig(paths: string[], errorMessage: string) {
     return data;
   } catch (error) {
     errorText(errorMessage);
+    process.exit(1);
   }
 }
 
@@ -78,7 +79,13 @@ export function readGlobalCssFileFromConfig(customPath?: string) {
   return cssGlobalFile;
 }
 
-export function readUserThemeObjectFromConfig() {
+/**
+ * Read user-defined theme object from the Tailwind config file
+ * @param customConfigPath - Custom path to the Tailwind config file (optional)
+ * @returns Returns the theme object from the Tailwind config file, or an empty object
+ */
+
+export function readUserThemeObjectFromConfig(customConfigPath?: string) {
   const filePaths = [
     "tailwind.config.js",
     "tailwind.config.ts",
@@ -88,8 +95,8 @@ export function readUserThemeObjectFromConfig() {
   ];
 
   const configFile = readUserConfig(
-    filePaths,
-    "Could not locate Tailwind config file",
+    customConfigPath ? [customConfigPath] : filePaths,
+    "Could not locate Tailwind config file. If it is not in the root directory, please provide a custom path with the -c flag",
   );
 
   // Create a sandbox and define the `module` structure
@@ -115,13 +122,14 @@ export function readUserThemeObjectFromConfig() {
 /**
  * Read user-defined theme colors from the Tailwind config file
  * @description Reads the 'colors' object from the root of config, and from extend object
+ * @param customConfigPath - Custom path to the Tailwind config file (optional)
  * @returns Returns an object with overrideColors and extendColors
- * @description overrideColors are the colors object from the root of the config
- * @description extendColors are the colors object from the extend object
+ * @overrideColors are the colors object from the root of the config
+ * @extendColors are the colors object from the extend object
  */
 
-export function readUserThemeColorsFromConfig() {
-  const themeObject = readUserThemeObjectFromConfig();
+export function readUserThemeColorsFromConfig(customConfigPath?: string) {
+  const themeObject = readUserThemeObjectFromConfig(customConfigPath);
 
   const overrideColors =
     themeObject.hasOwnProperty("colors") && themeObject.colors;

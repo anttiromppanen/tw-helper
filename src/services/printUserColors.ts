@@ -6,8 +6,9 @@ import {
   tablesSideBySide,
 } from "../utils/tableUtils";
 
-export function printUserColors() {
-  const { extendColors, overrideColors } = readUserThemeColorsFromConfig();
+export function printUserColors(customConfigPath?: string) {
+  const { extendColors, overrideColors } =
+    readUserThemeColorsFromConfig(customConfigPath);
 
   if (!extendColors && !overrideColors) {
     printHeader("No user-defined colors found in the Tailwind config file");
