@@ -3,50 +3,10 @@ import CliTable3 from "cli-table3";
 import chalk from "chalk";
 import printHeader from "../utils/textUtils";
 import { readUserThemeObjectFromConfig } from "../utils/readUserConfig";
-
-/**
- * Combine two tables side by side with some space in between
- * @param table1 table displayed on the left
- * @param table2 table displayed on the right
- * @returns output string
- */
-
-function tablesSideBySide(table1: string, table2: string) {
-  const table1Lines = table1.toString().split("\n");
-  const table2Lines = table2.toString().split("\n");
-
-  let output = "";
-  const maxLines = Math.max(table1Lines.length, table2Lines.length);
-
-  for (let i = 0; i < maxLines; i++) {
-    const line1 = table1Lines[i] || ""; // If no line, use empty string
-    const line2 = table2Lines[i] || ""; // If no line, use empty string
-
-    // Combine the two lines with some space in between
-    output += line1 + "   " + line2 + "\n";
-  }
-
-  return output;
-}
-
-/**
- * Create a table from an array of breakpoints
- * @param breakpoints array of breakpoints
- * @returns table as string
- */
-
-function createTableFromBreakpointsArray(breakpoints: any) {
-  const table = new CliTable3({
-    head: [chalk.bold.cyan("Name"), chalk.bold.cyan("Size")],
-    colWidths: [20, 20],
-  });
-
-  breakpoints.forEach(([key, value]: [string, string]) => {
-    table.push([chalk.gray(key), chalk.gray(value)]);
-  });
-
-  return table.toString();
-}
+import {
+  createTableFromKeyValueArray,
+  tablesSideBySide,
+} from "../utils/tableUtils";
 
 /**
  * Create tables for default and user-defined breakpoints
@@ -55,25 +15,33 @@ function createTableFromBreakpointsArray(breakpoints: any) {
  */
 
 function createTables() {
+  // Check if extend.screens object exists in the user's theme
   const themeObject = readUserThemeObjectFromConfig();
   const extendObject =
     themeObject.hasOwnProperty("extend") && themeObject.extend;
   const hasScreensObject = extendObject.hasOwnProperty("screens");
 
+  // create default breakpoints table
   const defaultBreakpointsArray = Object.entries(TAILWIND_DEFAULT_BREAKPOINTS);
-  const defaultBreakpointsTable = createTableFromBreakpointsArray(
+  const defaultBreakpointsTable = createTableFromKeyValueArray(
     defaultBreakpointsArray,
+    "Name",
+    "Size",
   );
 
   if (!hasScreensObject) {
     return defaultBreakpointsTable;
   }
 
+  // create user breakpoints table
   const userBreakpoints = extendObject.screens;
   const userBreakpointsArray = Object.entries(userBreakpoints);
 
-  const userBreakpointsTable =
-    createTableFromBreakpointsArray(userBreakpointsArray);
+  const userBreakpointsTable = createTableFromKeyValueArray(
+    userBreakpointsArray,
+    "Name",
+    "Size",
+  );
 
   return { defaultBreakpointsTable, userBreakpointsTable };
 }
@@ -81,13 +49,10 @@ function createTables() {
 export default function printBreakpoints() {
   const tables = createTables();
 
+  // tables is typeof string if no user-defined breakpoints are found
   if (typeof tables === "string") {
     printHeader("Default Tailwind CSS breakpoints");
-    console.log(
-      createTableFromBreakpointsArray(
-        Object.entries(TAILWIND_DEFAULT_BREAKPOINTS),
-      ),
-    );
+    console.log(tables + "\n");
     return;
   }
 

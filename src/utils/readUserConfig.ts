@@ -111,3 +111,23 @@ export function readUserThemeObjectFromConfig() {
     return {};
   }
 }
+
+/**
+ * Read user-defined theme colors from the Tailwind config file
+ * @description Reads the 'colors' object from the root of config, and from extend object
+ * @returns Returns an object with overrideColors and extendColors
+ * @description overrideColors are the colors object from the root of the config
+ * @description extendColors are the colors object from the extend object
+ */
+
+export function readUserThemeColorsFromConfig() {
+  const themeObject = readUserThemeObjectFromConfig();
+
+  const overrideColors =
+    themeObject.hasOwnProperty("colors") && themeObject.colors;
+
+  const extendColors =
+    themeObject.extend?.hasOwnProperty("colors") && themeObject.extend.colors;
+
+  return { overrideColors, extendColors };
+}
