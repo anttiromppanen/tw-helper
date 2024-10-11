@@ -1,7 +1,10 @@
 import CliTable3 from "cli-table3";
 import { readUserThemeColorsFromConfig } from "../utils/readUserConfig";
 import printHeader from "../utils/textUtils";
-import { createTableFromKeyValueArray } from "../utils/tableUtils";
+import {
+  createTableFromKeyValueArray,
+  tablesSideBySide,
+} from "../utils/tableUtils";
 
 export function printUserColors() {
   const { extendColors, overrideColors } = readUserThemeColorsFromConfig();
@@ -18,13 +21,14 @@ export function printUserColors() {
     extendColorsArray,
     "Name",
     "Color",
+    true,
   );
   const overrideColorsTable = createTableFromKeyValueArray(
     overrideColorsArray,
     "Name",
     "Color",
+    true,
   );
 
-  console.log(extendColorsTable.toString());
-  console.log(overrideColorsTable.toString());
+  console.log(tablesSideBySide(extendColorsTable, overrideColorsTable));
 }

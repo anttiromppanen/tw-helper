@@ -36,14 +36,18 @@ export function createTableFromKeyValueArray(
   breakpoints: any,
   header1: string,
   header2: string,
+  row1Color?: boolean,
 ) {
+  const customRowColor = (text: string, color: string) =>
+    row1Color ? chalk.hex(color)(text) : chalk.gray(text);
+
   const table = new CliTable3({
     head: [chalk.bold.cyan(header1), chalk.bold.cyan(header2)],
     colWidths: [20, 20],
   });
 
   breakpoints.forEach(([key, value]: [string, string]) => {
-    table.push([chalk.gray(key), chalk.gray(value)]);
+    table.push([customRowColor(key, value), chalk.gray(value)]);
   });
 
   return table.toString();
