@@ -5,49 +5,45 @@ import path from "path";
 import { errorText } from "./textUtils";
 
 /**
- * Read the user's Tailwind config file from root directory
+ * Try to read config file from the given paths
+ * @param paths - Array of paths to check for the config file
+ * @param errorMessage - Error message to display if the config file is not found
  * @returns Returns the config file in utf8 format
  */
 
-export function readUserConfig() {
-  const tailwindJs = path.resolve(process.cwd(), "tailwind.config.js");
-  const tailwindTs = path.resolve(process.cwd(), "tailwind.config.ts");
-  const tailwindCjs = path.resolve(process.cwd(), "tailwind.config.cjs");
-  const tailwindMjs = path.resolve(process.cwd(), "tailwind.config.mjs");
-  const tailwindJson = path.resolve(process.cwd(), "tailwind.config.json");
-
+export function readUserConfig(paths: string[], errorMessage: string) {
   let configFile;
 
-  switch (true) {
-    case fs.existsSync(tailwindJs):
-      configFile = tailwindJs;
+  // Loop through the paths and check if the file exists
+  for (const filepath of paths) {
+    const resolvedPath = path.resolve(process.cwd(), filepath);
+    if (fs.existsSync(resolvedPath)) {
+      configFile = resolvedPath;
       break;
-    case fs.existsSync(tailwindTs):
-      configFile = tailwindTs;
-      break;
-    case fs.existsSync(tailwindCjs):
-      configFile = tailwindCjs;
-      break;
-    case fs.existsSync(tailwindMjs):
-      configFile = tailwindMjs;
-      break;
-    case fs.existsSync(tailwindJson):
-      configFile = tailwindJson;
-      break;
-    default:
-      return;
+    }
   }
 
   try {
     const data = fs.readFileSync(configFile, "utf8");
     return data;
   } catch (error) {
-    errorText("Could not locate Tailwind config file");
+    errorText(errorMessage);
   }
 }
 
 export function readUserExtendObjectFromConfig() {
-  const configFile = readUserConfig();
+  const filePaths = [
+    "tailwind.config.js",
+    "tailwind.config.ts",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.json",
+  ];
+
+  const configFile = readUserConfig(
+    filePaths,
+    "Could not locate Tailwind config file",
+  );
 
   // Create a sandbox and define the `module` structure
   const sandbox = { module: { exports: {} }, require };
