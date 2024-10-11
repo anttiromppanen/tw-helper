@@ -7,6 +7,7 @@
 
 import chalk from "chalk";
 import CliTable3 from "cli-table3";
+import { chalkTextFromColor } from "./chalkUtils";
 
 export function tablesSideBySide(table1: string, table2: string) {
   const table1Lines = table1.toString().split("\n");
@@ -39,7 +40,7 @@ export function createTableFromKeyValueArray(
   row1Color?: boolean,
 ) {
   const customRowColor = (text: string, color: string) =>
-    row1Color ? chalk.hex(color)(text) : chalk.gray(text);
+    row1Color ? chalkTextFromColor(color, text) : chalk.gray(text);
 
   const table = new CliTable3({
     head: [chalk.bold.cyan(header1), chalk.bold.cyan(header2)],

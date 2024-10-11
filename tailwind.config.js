@@ -21,6 +21,10 @@ module.exports = {
         warning: "#FF0000",
         success: "#00FF00",
         error: "#FF0000",
+        hslTest: "hsl(289, 45%, 62%)",
+        hslaTest: "hsla(134, 75%, 44%, 0.5)",
+        rgbTest: "rgb(245, 99, 56)",
+        rgbaTest: "rgba(112, 183, 255, 0.72)",
       },
       screens: {
         sm: "800px",
