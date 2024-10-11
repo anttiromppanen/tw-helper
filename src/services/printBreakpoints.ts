@@ -50,18 +50,26 @@ function createTableFromBreakpointsArray(breakpoints: any) {
 
 /**
  * Create tables for default and user-defined breakpoints
+ * @returns a string if no user-defined breakpoints are found
  * @returns an object containing user- and default breakpoints as table.toString()
  */
 
 function createTables() {
-  const { screens: userBreakpoints } = readUserExtendObjectFromConfig();
+  const extendObject = readUserExtendObjectFromConfig();
+  const hasScreensObject = extendObject.hasOwnProperty("screens");
 
   const defaultBreakpointsArray = Object.entries(TAILWIND_DEFAULT_BREAKPOINTS);
-  const userBreakpointsArray = Object.entries(userBreakpoints);
-
   const defaultBreakpointsTable = createTableFromBreakpointsArray(
     defaultBreakpointsArray,
   );
+
+  if (!hasScreensObject) {
+    return defaultBreakpointsTable;
+  }
+
+  const userBreakpoints = extendObject.screens;
+  const userBreakpointsArray = Object.entries(userBreakpoints);
+
   const userBreakpointsTable =
     createTableFromBreakpointsArray(userBreakpointsArray);
 
@@ -69,12 +77,24 @@ function createTables() {
 }
 
 export default function printBreakpoints() {
+  const tables = createTables();
+
+  if (typeof tables === "string") {
+    printHeader("Default Tailwind CSS breakpoints");
+    console.log(
+      createTableFromBreakpointsArray(
+        Object.entries(TAILWIND_DEFAULT_BREAKPOINTS),
+      ),
+    );
+    return;
+  }
+
   printHeader(
     "Default Tailwind CSS breakpoints *" +
       " ".repeat(11) +
       "* User-defined breakpoints",
   );
 
-  const { defaultBreakpointsTable, userBreakpointsTable } = createTables();
+  const { defaultBreakpointsTable, userBreakpointsTable } = tables;
   console.log(tablesSideBySide(defaultBreakpointsTable, userBreakpointsTable));
 }

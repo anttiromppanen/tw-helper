@@ -65,7 +65,6 @@ export function readUserExtendObjectFromConfig() {
     // Do something with the extend object (e.g., return it or modify it)
     return extendObject;
   } else {
-    console.log("No extend object found in the Tailwind config");
-    return null;
+    return {};
   }
 }
