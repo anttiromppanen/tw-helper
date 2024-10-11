@@ -3,6 +3,7 @@
 import { Command } from "commander";
 import globalColorsCommand from "./commands/global-colors";
 import breakpointsCommand from "./commands/breakpoints";
+import testCommand from "./commands/test";
 
 const program = new Command();
 
@@ -16,6 +17,7 @@ function main() {
 
   program.addCommand(globalColorsCommand);
   program.addCommand(breakpointsCommand);
+  program.addCommand(testCommand);
 
   program.parse();
 }

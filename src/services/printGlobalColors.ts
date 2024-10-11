@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import CliTable3 from "cli-table3";
 import { TAILWIND_COLORS_100_TO_900 } from "../const/tailwindColors";
-import printHeader from "../utils/printHeader";
+import printHeader from "../utils/textUtils";
 
 /**
  * Print all global colors in Tailwind CSS in a table format

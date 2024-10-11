@@ -1,4 +1,4 @@
-import { Command, program } from "commander";
+import { Command } from "commander";
 import printBreakpoints from "../services/printBreakpoints";
 
 const breakpointsCommand = new Command("breakpoints")

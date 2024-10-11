@@ -1,8 +1,8 @@
-import printHeader from "../utils/printHeader";
 import { TAILWIND_DEFAULT_BREAKPOINTS } from "../const/tailwindBreakpoints";
 import CliTable3 from "cli-table3";
 import chalk from "chalk";
 import { readUserExtendObjectFromConfig } from "../utils/readUserConfig";
+import printHeader from "../utils/textUtils";
 
 /**
  * Combine two tables side by side with some space in between
