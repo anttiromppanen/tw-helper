@@ -1,5 +1,5 @@
-const fs = require("fs");
-const vm = require("vm");
+import * as fs from "fs";
+import * as vm from "vm";
 import path from "path";
 import { errorText } from "./textUtils";
 import {
@@ -27,7 +27,7 @@ export function readUserConfig(paths: string[], errorMessage: string) {
   }
 
   try {
-    const data = fs.readFileSync(configFile, "utf8");
+    const data = fs.readFileSync(configFile!, "utf8");
     return data;
   } catch (error) {
     errorText(errorMessage);

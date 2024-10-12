@@ -1,8 +1,9 @@
 {
   "name": "tw-helper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CLI tool providing useful helper functions for developers using Tailwind CSS",
-  "main": "./dist/cli.js",
+  "main": "dist/cli.cjs",
+  "module": "dist/cli.js",
   "publishConfig": {
     "access": "public"
   },
@@ -12,6 +13,7 @@
   "files": [
     "dist/*"
   ],
+  "type": "module",
   "scripts": {
     "build": "tsup src/cli.ts --minify",
     "lint": "eslint --config .eslintrc.json .",
@@ -34,6 +36,7 @@
   "homepage": "https://github.com/anttiromppanen/tw-helper",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@types/color": "^3.0.6",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.5",
     "eslint": "^9.12.0",

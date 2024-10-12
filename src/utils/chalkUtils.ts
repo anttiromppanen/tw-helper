@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { errorText } from "./textUtils";
 
-const Color = require("color");
+import Color from "color";
 
 /**
  * Converts a color to hex format
@@ -30,7 +30,7 @@ export function convertColorToHex(inputColor: string) {
 export function chalkTextFromColor(color: string, text: string) {
   try {
     const colorAsHex = convertColorToHex(color);
-    return chalk.hex(colorAsHex)(text);
+    return chalk.hex(colorAsHex!)(text);
   } catch (error) {
     return chalk.gray(text);
   }
