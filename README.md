@@ -16,7 +16,7 @@ npx tw-helper
 
 ## Commands
 
-#### `colors` Command
+### `colors` Command
 
 The colors command allows you to list the colors on the Tailwind project.
 
@@ -52,35 +52,36 @@ tw-helper colors [options]
 
   This command will print the colors defined in the specified configuration file.
 
-**Example output:**
+<br /> **Example output:**
 
 ```javascript
 tw-helper colors
 ```
 
-![colors command output](static/img/colors.png)
+<br /> ![colors command output](static/img/colors.png)
 
-**Example output:**
+<br /> **Example output:**
 
 ```javascript
 tw-helper colors -d
 ```
 
-![colors --default command output](static/img/colors-default.png)
 
-#### `breakpoints` Command
+<br /> ![colors --default command output](static/img/colors-default.png)
+
+### `breakpoints` Command
 
 The breakpoints command allows you to list the breakpoints on the Tailwind project.
 
-**Example output:**
+<br /> **Example output:**
 
 ```javascript
 tw-helper breakpoints
 ```
 
-![breakpoints command output](static/img/breakpoints.png)
+<br /> ![breakpoints command output](static/img/breakpoints.png) <br />
 
-#### `css` Command
+### `css` Command
 
 The css command allows you to list the Tailwind helper classes associated for the provided css property. Also provides a link to the Tailwind documentation for the given property.
 
@@ -94,13 +95,13 @@ tw-helper css <property>
 
 - Css property to list the Tailwind classes for.
 
-**Example output:**
+<br /> **Example output:**
 
 ```javascript
 tw-helper css opacity
 ```
 
-![css command output](static/img/css.png)
+<br /> ![css command output](static/img/css.png)
 
 ## License
 
