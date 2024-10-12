@@ -23,6 +23,7 @@
   "author": "Antti Romppanen",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.7.5",
     "eslint": "^9.12.0",
     "jsdoc": "^4.0.3",
     "prettier": "^3.3.3",
@@ -33,7 +34,6 @@
     "chalk": "^4.1.2",
     "cli-table3": "^0.6.5",
     "color": "^4.2.3",
-    "commander": "^12.1.0",
-    "inquirer": "^12.0.0"
+    "commander": "^12.1.0"
   }
 }

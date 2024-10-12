@@ -2,9 +2,8 @@
 
 import { Command } from "commander";
 import breakpointsCommand from "./commands/breakpoints.command";
-import testCommand from "./commands/test.command";
-import cssCommand from "./commands/css.command";
 import colorsCommand from "./commands/colors.command";
+import cssCommand from "./commands/css.command";
 
 const program = new Command();
 
@@ -14,12 +13,11 @@ function main() {
     .description(
       "A CLI tool providing useful helper functions for developers using Tailwind CSS",
     )
-    .version("0.0.1");
+    .version("1.0.0");
 
   program.addCommand(colorsCommand);
   program.addCommand(breakpointsCommand);
   program.addCommand(cssCommand);
-  program.addCommand(testCommand);
 
   program.parse();
 }

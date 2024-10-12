@@ -4,6 +4,7 @@ import { errorText } from "./textUtils";
 const Color = require("color");
 
 export function convertColorToHex(inputColor: string) {
+  if (inputColor.includes("var")) return inputColor;
   try {
     const colorAsHex = Color(inputColor);
     return colorAsHex.hex();

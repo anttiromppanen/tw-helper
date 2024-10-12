@@ -28,6 +28,7 @@ module.exports = {
         warning: "#FF0000",
         success: "#00FF00",
         error: "#FF0000",
+        test: "hsl(var(--color-primary))",
         hslTest: "hsl(289, 45%, 62%)",
         brown: {
           50: "#fdf8f6",
