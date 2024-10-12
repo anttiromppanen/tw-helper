@@ -70,7 +70,6 @@ tw-helper colors
 tw-helper colors -d
 ```
 
-
 <br /> ![colors --default command output](static/img/colors-default.png)
 
 ### `breakpoints` Command

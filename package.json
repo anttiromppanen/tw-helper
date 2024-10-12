@@ -7,8 +7,11 @@
     "access": "public"
   },
   "bin": {
-    "tw-helper": "./dist/cli.js"
+    "tw-helper": "dist/cli.js"
   },
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "build": "tsup src/cli.ts --minify",
     "lint": "eslint --config .eslintrc.json .",
@@ -23,8 +26,12 @@
     "Tailwind CSS",
     "CSS"
   ],
-  "author": "Antti Romppanen",
+  "author": "Antti Romppanen (https://github.com/anttiromppanen)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anttiromppanen/tw-helper/issues"
+  },
+  "homepage": "https://github.com/anttiromppanen/tw-helper",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.13",
