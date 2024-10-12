@@ -886,6 +886,26 @@ export const CSS_PROPERTIES_DICT: Record<string, TailwindUrlAndClasses> = {
   },
 
   // Borders
+  border: {
+    urlToDocs: "https://tailwindcss.com/docs/border-width",
+    classes: ["border", "border-*"],
+  },
+  "border-top": {
+    urlToDocs: "https://tailwindcss.com/docs/border-width",
+    classes: ["border-t", "border-t-*"],
+  },
+  "border-right": {
+    urlToDocs: "https://tailwindcss.com/docs/border-width",
+    classes: ["border-r", "border-r-*"],
+  },
+  "border-bottom": {
+    urlToDocs: "https://tailwindcss.com/docs/border-width",
+    classes: ["border-b", "border-b-*"],
+  },
+  "border-left": {
+    urlToDocs: "https://tailwindcss.com/docs/border-width",
+    classes: ["border-l", "border-l-*"],
+  },
   "border-radius": {
     urlToDocs: "https://tailwindcss.com/docs/border-radius",
     classes: [

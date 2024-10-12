@@ -56,12 +56,24 @@ export default function printBreakpoints() {
     return;
   }
 
-  printHeader(
-    " Default Tailwind CSS breakpoints" +
-      " ".repeat(14) +
-      "User-defined breakpoints",
+  const { defaultBreakpointsTable, userBreakpointsTable } = tables;
+  const { output, tablePlacesSwapped } = tablesSideBySide(
+    defaultBreakpointsTable,
+    userBreakpointsTable,
   );
 
-  const { defaultBreakpointsTable, userBreakpointsTable } = tables;
-  console.log(tablesSideBySide(defaultBreakpointsTable, userBreakpointsTable));
+  if (tablePlacesSwapped)
+    printHeader(
+      " User-defined breakpoints" +
+        " ".repeat(22) +
+        "Default Tailwind CSS breakpoints",
+    );
+  else
+    printHeader(
+      " Default Tailwind CSS breakpoints" +
+        " ".repeat(14) +
+        "User-defined breakpoints",
+    );
+
+  console.log(output);
 }

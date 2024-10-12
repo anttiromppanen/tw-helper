@@ -43,11 +43,27 @@ export function printUserColors(customConfigPath?: string) {
     return;
   }
 
-  printHeader(
-    "Extended colors (theme.extend.colors)" +
-      " ".repeat(20) +
-      "Overridden colors (theme.colors)",
+  const { output, tablePlacesSwapped } = tablesSideBySide(
+    extendColorsTable,
+    overrideColorsTable,
   );
-  console.log(tablesSideBySide(extendColorsTable, overrideColorsTable));
+
+  // If the tables are swapped, print the header accordingly
+  // Tables are swapped if the first table has fewer lines than the second
+  if (tablePlacesSwapped) {
+    printHeader(
+      "Overridden colors (theme.colors)" +
+        " ".repeat(25) +
+        "Extended colors (theme.extend.colors)",
+    );
+  } else {
+    printHeader(
+      "Extended colors (theme.extend.colors)" +
+        " ".repeat(20) +
+        "Overridden colors (theme.colors)",
+    );
+  }
+
+  console.log(output);
   console.log("");
 }
