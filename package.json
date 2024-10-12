@@ -15,11 +15,13 @@
     "format": "prettier --write .",
     "dev": "npm run build && dist/cli.js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [
     "Tailwind",
-    "Tailwind CSS"
+    "Tailwind CSS",
+    "CSS"
   ],
   "author": "Antti Romppanen",
   "license": "ISC",
