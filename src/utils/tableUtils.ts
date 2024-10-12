@@ -54,6 +54,7 @@ export function createTableFromKeyValueArray(
 
   const table = new CliTable3({
     head: [chalk.bold.cyan(header1), chalk.bold.cyan(header2)],
+    style: { border: [], compact: true },
     colWidths: customColWidths || [20, 20],
   });
 
