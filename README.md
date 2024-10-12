@@ -62,7 +62,7 @@ tw-helper colors [options]
 tw-helper colors
 ```
 
-<br /> ![colors command output](static/img/colors.png)
+<br /> ![colors command output](https://github.com/anttiromppanen/tw-helper/blob/main/static/img/colors.png)
 
 <br /> **Example output:**
 
@@ -70,7 +70,7 @@ tw-helper colors
 tw-helper colors -d
 ```
 
-<br /> ![colors --default command output](static/img/colors-default.png)
+<br /> ![colors --default command output](https://github.com/anttiromppanen/tw-helper/blob/main/static/img/colors-default.png)
 
 ### `breakpoints` Command
 
@@ -82,7 +82,7 @@ The breakpoints command allows you to list the breakpoints on the Tailwind proje
 tw-helper breakpoints
 ```
 
-<br /> ![breakpoints command output](static/img/breakpoints.png) <br />
+<br /> ![breakpoints command output](https://github.com/anttiromppanen/tw-helper/blob/main/static/img/breakpoints.png) <br />
 
 ### `css` Command
 
@@ -104,7 +104,7 @@ tw-helper css <property>
 tw-helper css opacity
 ```
 
-<br /> ![css command output](static/img/css.png)
+<br /> ![css command output](https://github.com/anttiromppanen/tw-helper/blob/main/static/img/css.png)
 
 ## License
 
