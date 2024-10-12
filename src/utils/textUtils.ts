@@ -5,7 +5,7 @@ export function errorText(text: string) {
 }
 
 export default function printHeader(text: string) {
-  console.log(chalk.bold.visible(`\n* ${text} *\n`));
+  console.log(chalk.bold.green(`\n${text}\n`));
 }
 
 export function cssPropertyNotFoundText() {

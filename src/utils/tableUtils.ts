@@ -30,6 +30,10 @@ export function tablesSideBySide(table1: string, table2: string) {
 /**
  * Create a table from an array of breakpoints
  * @param breakpoints array of breakpoints
+ * @param header1 header for the first column
+ * @param header2 header for the second column
+ * @param row1Color color for the first row (optional)
+ * @param customColWidths custom column widths array (optional)
  * @returns table as string
  */
 
@@ -38,13 +42,14 @@ export function createTableFromKeyValueArray(
   header1: string,
   header2: string,
   row1Color?: boolean,
+  customColWidths?: number[],
 ) {
   const customRowColor = (text: string, color: string) =>
     row1Color ? chalkTextFromColor(color, text) : chalk.gray(text);
 
   const table = new CliTable3({
     head: [chalk.bold.cyan(header1), chalk.bold.cyan(header2)],
-    colWidths: [20, 20],
+    colWidths: customColWidths || [20, 20],
   });
 
   breakpoints.forEach(([key, value]: [string, string]) => {

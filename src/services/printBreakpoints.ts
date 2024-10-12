@@ -57,9 +57,9 @@ export default function printBreakpoints() {
   }
 
   printHeader(
-    "Default Tailwind CSS breakpoints *" +
-      " ".repeat(11) +
-      "* User-defined breakpoints",
+    " Default Tailwind CSS breakpoints" +
+      " ".repeat(14) +
+      "User-defined breakpoints",
   );
 
   const { defaultBreakpointsTable, userBreakpointsTable } = tables;

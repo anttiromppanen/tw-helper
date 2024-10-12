@@ -1,4 +1,3 @@
-import CliTable3 from "cli-table3";
 import { readUserThemeColorsFromConfig } from "../utils/readUserConfig";
 import printHeader from "../utils/textUtils";
 import {
@@ -23,13 +22,32 @@ export function printUserColors(customConfigPath?: string) {
     "Name",
     "Color",
     true,
+    [20, 30],
   );
   const overrideColorsTable = createTableFromKeyValueArray(
     overrideColorsArray,
     "Name",
     "Color",
     true,
+    [20, 30],
   );
 
+  if (!extendColors) {
+    printHeader("theme.colors object");
+    console.log(overrideColorsTable + "\n");
+    return;
+  }
+  if (!overrideColors) {
+    printHeader("theme.extend.colors object");
+    console.log(extendColorsTable + "\n");
+    return;
+  }
+
+  printHeader(
+    "Extended colors (theme.extend.colors)" +
+      " ".repeat(20) +
+      "Overridden colors (theme.colors)",
+  );
   console.log(tablesSideBySide(extendColorsTable, overrideColorsTable));
+  console.log("");
 }
