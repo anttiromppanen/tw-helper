@@ -14,7 +14,8 @@
     "lint": "eslint --config .eslintrc.json .",
     "format": "prettier --write .",
     "dev": "npm run build && dist/cli.js",
-    "test": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "Tailwind",
