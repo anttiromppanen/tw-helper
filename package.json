@@ -1,8 +1,8 @@
 {
   "name": "tw-helper",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A CLI tool providing useful helper functions for developers using Tailwind CSS",
-  "main": "cli.js",
+  "main": "./dist/cli.js",
   "publishConfig": {
     "access": "public"
   },
@@ -24,7 +24,7 @@
     "CSS"
   ],
   "author": "Antti Romppanen",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.13",
