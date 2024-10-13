@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A CLI tool providing useful helper functions for developers using Tailwind CSS",
   "main": "dist/cli.js",
-  "module": "dist/cli.mjs",
   "publishConfig": {
     "access": "public"
   },
@@ -13,12 +12,6 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "require": "./dist/cli.js",
-      "import": "./dist/cli.mjs"
-    }
-  },
   "scripts": {
     "build": "tsup src/cli.ts",
     "lint": "eslint --config .eslintrc.json .",
