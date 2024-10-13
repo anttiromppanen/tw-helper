@@ -1,9 +1,9 @@
 {
   "name": "tw-helper",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "A CLI tool providing useful helper functions for developers using Tailwind CSS",
-  "main": "dist/cli.cjs",
-  "module": "dist/cli.js",
+  "main": "dist/cli.js",
+  "module": "dist/cli.mjs",
   "publishConfig": {
     "access": "public"
   },
@@ -11,11 +11,16 @@
     "tw-helper": "dist/cli.js"
   },
   "files": [
-    "dist/*"
+    "dist"
   ],
-  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/cli.js",
+      "import": "./dist/cli.mjs"
+    }
+  },
   "scripts": {
-    "build": "tsup src/cli.ts --minify",
+    "build": "tsup src/cli.ts",
     "lint": "eslint --config .eslintrc.json .",
     "format": "prettier --write .",
     "dev": "npm run build && dist/cli.js",

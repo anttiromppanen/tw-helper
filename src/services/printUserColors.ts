@@ -24,6 +24,7 @@ export function printUserColors(customConfigPath?: string) {
     true,
     [20, 30],
   );
+
   const overrideColorsTable = createTableFromKeyValueArray(
     overrideColorsArray,
     "Name",
@@ -37,6 +38,7 @@ export function printUserColors(customConfigPath?: string) {
     console.log(overrideColorsTable + "\n");
     return;
   }
+
   if (!overrideColors) {
     printHeader("theme.extend.colors object");
     console.log(extendColorsTable + "\n");

@@ -2,8 +2,8 @@
 
 import { Command } from "commander";
 import breakpointsCommand from "./commands/breakpoints.command";
-import colorsCommand from "./commands/colors.command";
 import cssCommand from "./commands/css.command";
+import colorsCommand from "./commands/colors.command";
 
 const program = new Command();
 
