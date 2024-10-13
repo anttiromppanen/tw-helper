@@ -11,7 +11,7 @@ How many times you forgot what the helper classes for line-height were, or what 
 ## Usage
 
 ```javascript
-npm install tw-helper
+npm install tw-helper --save-dev
 ```
 
 ```javascript
