@@ -99,10 +99,22 @@ export function readUserThemeObjectFromConfig(customConfigPath?: string) {
     "Could not locate Tailwind config file. If it is not in the root directory, please provide a custom path with the -c flag",
   );
 
+  // File is JSON if it starts with {
+  if (configFile.startsWith("{")) {
+    const jsonObject = JSON.parse(configFile);
+    return jsonObject.theme;
+  }
+
+  // Transform ES module export to CommonJS export
+  const transformedContent = configFile.replace(
+    /export default/,
+    "module.exports =",
+  );
+
   // Create a sandbox and define the `module` structure
   const sandbox = { module: { exports: {} }, require };
 
-  const script = new vm.Script(configFile);
+  const script = new vm.Script(transformedContent);
   script.runInNewContext(sandbox);
 
   // Extract the Tailwind config object
