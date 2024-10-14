@@ -8,7 +8,9 @@ import {
 } from "../const/cssFileLocations";
 
 export function isValidFileExtension(filepath?: string) {
-  if (!filepath) return;
+  // Return false if no filepath is provided
+  // This is so that readUserConfig can handle the error message of not finding config file
+  if (!filepath) return false;
 
   const validExtensions = [".js", ".ts", ".cjs", ".mjs", ".json"];
   let fileExtension = "";
@@ -18,15 +20,19 @@ export function isValidFileExtension(filepath?: string) {
   } catch (error) {
     errorText("Invalid file extension");
     process.exit(1);
-  } finally {
-    const isValidFile = validExtensions.includes(fileExtension);
-    if (!isValidFile) {
-      errorText(
-        `Invalid file extension. Valid file extensions are: ${validExtensions.join(", ")}`,
-      );
-      process.exit(1);
-    }
   }
+
+  const isValidFile = validExtensions.includes(fileExtension);
+
+  if (!isValidFile) {
+    errorText(
+      `Invalid file extension. Valid file extensions are: ${validExtensions.join(", ")}`,
+    );
+    process.exit(1);
+  }
+
+  // Return true if the file extension is valid
+  return true;
 }
 
 /**

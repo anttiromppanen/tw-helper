@@ -16,9 +16,36 @@ describe("readUserConfig", () => {
   });
 
   describe("isValidFileExtension", () => {
-    it("should return undefined when no filepath", () => {
-      expect(isValidFileExtension()).toBeUndefined();
-      expect(isValidFileExtension("")).toBeUndefined();
+    beforeEach(() => {
+      // Reset the mock before each test to avoid interference between tests
+      (path.extname as jest.Mock).mockReset();
+    });
+
+    it("should return false when no filepath", () => {
+      expect(isValidFileExtension()).toBeFalsy();
+      expect(isValidFileExtension("")).toBeFalsy();
+    });
+
+    it.only("should return true if the file extension is valid", () => {
+      jest.mock("path", () => ({
+        ...jest.requireActual("path"), // Keep other methods intact
+        extname: jest.fn(), // Mock extname
+      }));
+
+      (path.extname as jest.Mock).mockImplementation((filepath) => {
+        if (filepath === "file.js") return ".js";
+        if (filepath === "file.ts") return ".ts";
+        if (filepath === "file.cjs") return ".cjs";
+        if (filepath === "file.mjs") return ".mjs";
+        if (filepath === "file.json") return ".json";
+        return "";
+      });
+
+      expect(isValidFileExtension("file.js")).toBeTruthy();
+      expect(isValidFileExtension("file.ts")).toBeTruthy();
+      expect(isValidFileExtension("file.cjs")).toBeTruthy();
+      expect(isValidFileExtension("file.mjs")).toBeTruthy();
+      expect(isValidFileExtension("file.json")).toBeTruthy();
     });
 
     it("should display error message and exit if the file extension is invalid", () => {
