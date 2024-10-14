@@ -51,7 +51,7 @@ tw-helper colors [options]
   Example:
 
   ```javascript
-  tw-helper colors --config ./path/to/your-config.js
+  tw-helper colors --config "/path/to/your-config.js"
   ```
 
   This command will print the colors defined in the specified configuration file.
@@ -75,6 +75,16 @@ tw-helper colors -d
 ### `breakpoints` Command
 
 The breakpoints command allows you to list the breakpoints on the Tailwind project.
+
+- -c, --config \<file>:
+
+  Use this flag to provide a custom Tailwind configuration file. The file should specify custom colors used in your project. This flag is only required, if the tailwind configuration file is renamed, or relocated from the project root.
+
+  Example:
+
+  ```javascript
+  tw-helper breakpoints --config "/path/to/your-config.js"
+  ```
 
 <br /> **Example output:**
 
