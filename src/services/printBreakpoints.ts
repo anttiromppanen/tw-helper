@@ -14,9 +14,9 @@ import {
  * @returns an object containing user- and default breakpoints as table.toString()
  */
 
-function createTables() {
+function createTables(customConfigPath?: string) {
   // Check if extend.screens object exists in the user's theme
-  const themeObject = readUserThemeObjectFromConfig();
+  const themeObject = readUserThemeObjectFromConfig(customConfigPath);
   const extendObject =
     themeObject.hasOwnProperty("extend") && themeObject.extend;
   const hasScreensObject = extendObject.hasOwnProperty("screens");
@@ -46,8 +46,8 @@ function createTables() {
   return { defaultBreakpointsTable, userBreakpointsTable };
 }
 
-export default function printBreakpoints() {
-  const tables = createTables();
+export default function printBreakpoints(customConfigPath?: string) {
+  const tables = createTables(customConfigPath);
 
   // tables is typeof string if no user-defined breakpoints are found
   if (typeof tables === "string") {
