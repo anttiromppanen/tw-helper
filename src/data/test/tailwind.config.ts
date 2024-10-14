@@ -1,36 +1,37 @@
 const config = {
-  content: ["./src/**/*.{html,js}"],
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    fontFamily: {
-      sans: ["Graphik", "sans-serif"],
-      serif: ["Merriweather", "serif"],
-    },
     extend: {
-      spacing: {
-        "8xl": "96rem",
-        "9xl": "128rem",
+      screens: {
+        xl: "1440px",
       },
-      borderRadius: {
-        "4xl": "2rem",
+      fontFamily: {
+        arabic: ["var(--font-arabic)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
       },
       colors: {
-        primary: "#FF00FF",
-        secondary: "#00FF00",
-        white: "#FFFFFF",
-        black: "#000000",
-        warning: "#FF0000",
-        success: "#00FF00",
-        error: "#FF0000",
-      },
-      screens: {
-        sm: "800px",
-        md: "1000px",
-        lg: "1200px",
-        xl: "1400px",
-        "2xl": "1700px",
+        primaryDark: "#201F24",
+        primaryLight: "#F8F5F0",
+        primaryLightGrey: "#B4B3B8",
+        primaryDarkGrey: "#625F70",
+        secondaryBrown: "#F1CDAB",
+        secondaryTeal: "#81C9D7",
+        secondaryGreen: "#277C77",
       },
     },
   },
+  plugins: [],
+  safelist: [
+    "border-l-secondaryGreen",
+    "border-l-secondaryTeal",
+    "border-l-primaryDarkGrey",
+    "border-l-secondaryBrown",
+    "border-l-primaryDark",
+    "border-l-primaryLightGrey",
+  ],
 };
-
 export default config;

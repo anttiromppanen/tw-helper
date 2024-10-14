@@ -136,10 +136,18 @@ export function readUserThemeObjectFromConfig(customConfigPath?: string) {
 
   // Transform ES module export to CommonJS export
   // Without this, the script will throw a SyntaxError
-  const transformedContent = configFile.replace(
+  let transformedContent = configFile.replace(
     /export default/,
     "module.exports =",
   );
+  // Remove all import and require statements
+  transformedContent = transformedContent.replace(
+    /.*(import|require)\s.*;\n?/g,
+    "",
+  );
+
+  transformedContent = transformedContent.replace(": Config", "");
+  transformedContent = transformedContent.replace(":Config", "");
 
   // Create a sandbox and define the `module` structure
   const sandbox = { module: { exports: {} }, require };
