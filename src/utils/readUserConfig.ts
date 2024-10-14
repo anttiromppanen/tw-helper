@@ -7,6 +7,28 @@ import {
   COMMON_GLOBAL_CSS_FILELOCATIONS,
 } from "../const/cssFileLocations";
 
+export function isValidFileExtension(filepath?: string) {
+  if (!filepath) return;
+
+  const validExtensions = [".js", ".ts", ".cjs", ".mjs", ".json"];
+  let fileExtension = "";
+
+  try {
+    fileExtension = path.extname(filepath);
+  } catch (error) {
+    errorText("Invalid file extension");
+    process.exit(1);
+  } finally {
+    const isValidFile = validExtensions.includes(fileExtension);
+    if (!isValidFile) {
+      errorText(
+        `Invalid file extension. Valid file extensions are: ${validExtensions.join(", ")}`,
+      );
+      process.exit(1);
+    }
+  }
+}
+
 /**
  * Try to read config file from the given paths
  * @param paths - Array of paths to check for the config file
@@ -20,6 +42,7 @@ export function readUserConfig(paths: string[], errorMessage: string) {
   // Loop through the paths and check if the file exists
   for (const filepath of paths) {
     const resolvedPath = path.resolve(process.cwd(), filepath);
+
     if (fs.existsSync(resolvedPath)) {
       configFile = resolvedPath;
       break;
@@ -96,7 +119,7 @@ export function readUserThemeObjectFromConfig(customConfigPath?: string) {
 
   const configFile = readUserConfig(
     customConfigPath ? [customConfigPath] : filePaths,
-    "Could not locate Tailwind config file. If it is not in the root directory, please provide a custom path with the -c flag",
+    "Could not locate Tailwind config file. If it is not in the root directory, or has been renamed, please provide a custom path with the -c flag",
   );
 
   // File is JSON if it starts with {
@@ -106,6 +129,7 @@ export function readUserThemeObjectFromConfig(customConfigPath?: string) {
   }
 
   // Transform ES module export to CommonJS export
+  // Without this, the script will throw a SyntaxError
   const transformedContent = configFile.replace(
     /export default/,
     "module.exports =",
@@ -141,6 +165,8 @@ export function readUserThemeObjectFromConfig(customConfigPath?: string) {
  */
 
 export function readUserThemeColorsFromConfig(customConfigPath?: string) {
+  isValidFileExtension(customConfigPath!);
+
   const themeObject = readUserThemeObjectFromConfig(customConfigPath);
 
   const overrideColors =
