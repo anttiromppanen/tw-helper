@@ -21,7 +21,7 @@ describe("readUserConfig", () => {
       expect(isValidFileExtension("")).toBeUndefined();
     });
 
-    it.only("should display error message and exit if the file extension is invalid", () => {
+    it("should display error message and exit if the file extension is invalid", () => {
       // Mock process.exit
       const mockExit = jest
         .spyOn(process, "exit")
