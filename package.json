@@ -1,6 +1,6 @@
 {
   "name": "tw-helper",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A CLI tool providing useful helper functions for developers using Tailwind CSS",
   "main": "dist/cli.js",
   "publishConfig": {

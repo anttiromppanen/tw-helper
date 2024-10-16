@@ -1,6 +1,24 @@
 import * as fs from "fs";
 import * as path from "path";
-import { isValidFileExtension, readUserConfig } from "./readUserConfig";
+import {
+  isValidFileExtension,
+  readUserConfig,
+  readUserThemeObjectFromConfig,
+} from "./readUserConfig";
+
+import jsConfig from "../../data/test/tailwind.config.js";
+import cjsConfig from "../../data/test/tailwind.config.cjs";
+import jsonConfig from "../../data/test/tailwind.config.json";
+import mjsConfig from "../../data/test/tailwind.config.mjs";
+// @ts-ignore
+import tsConfig from "../../data/test/tailwind.config.ts";
+
+import jsConfigMock from "../../data/test/mock/tailwind.config.mock.js";
+import cjsConfigMock from "../../data/test/mock/tailwind.config.mock.cjs";
+import jsonConfigMock from "../../data/test/mock/tailwind.config.mock.json";
+import mjsConfigMock from "../../data/test/mock/tailwind.config.mock.mjs";
+// @ts-ignore
+import tsConfigMock from "../../data/test/mock/tailwind.config.mock.ts";
 
 // Mock the fs and path modules
 jest.mock("fs");
@@ -26,7 +44,7 @@ describe("readUserConfig", () => {
       expect(isValidFileExtension("")).toBeFalsy();
     });
 
-    it.only("should return true if the file extension is valid", () => {
+    it("should return true if the file extension is valid", () => {
       jest.mock("path", () => ({
         ...jest.requireActual("path"), // Keep other methods intact
         extname: jest.fn(), // Mock extname
@@ -100,6 +118,33 @@ describe("readUserConfig", () => {
         "process.exit: 1",
       );
       expect(mockExit).toHaveBeenCalledWith(1);
+    });
+  });
+
+  describe("readUserThemeObjectFromConfig", () => {
+    it("should return the theme object for a valid cjs config file", () => {
+      const cjsTheme = readUserThemeObjectFromConfig(cjsConfigMock);
+      expect(cjsConfig.theme).toEqual(cjsTheme);
+    });
+
+    it("should return the theme object for a valid js config file", () => {
+      const jsTheme = readUserThemeObjectFromConfig(jsConfigMock);
+      expect(jsConfig.theme).toEqual(jsTheme);
+    });
+
+    it("should return the theme object for a valid mjs config file", () => {
+      const mjsTheme = readUserThemeObjectFromConfig(mjsConfigMock);
+      expect(mjsConfig.theme).toEqual(mjsTheme);
+    });
+
+    it("should return the theme object for a valid ts config file", () => {
+      const tsTheme = readUserThemeObjectFromConfig(tsConfigMock);
+      expect(tsConfig.theme).toEqual(tsTheme);
+    });
+
+    it("should return the theme object for a valid json config file", () => {
+      const jsonTheme = readUserThemeObjectFromConfig(jsonConfigMock);
+      expect(jsonConfig.theme).toEqual(jsonTheme);
     });
   });
 });

@@ -114,20 +114,7 @@ export function readGlobalCssFileFromConfig(customPath?: string) {
  * @returns Returns the theme object from the Tailwind config file, or an empty object
  */
 
-export function readUserThemeObjectFromConfig(customConfigPath?: string) {
-  const filePaths = [
-    "tailwind.config.js",
-    "tailwind.config.ts",
-    "tailwind.config.cjs",
-    "tailwind.config.mjs",
-    "tailwind.config.json",
-  ];
-
-  const configFile = readUserConfig(
-    customConfigPath ? [customConfigPath] : filePaths,
-    "Could not locate Tailwind config file. If it is not in the root directory, or has been renamed, please provide a custom path with the -c flag",
-  );
-
+export function readUserThemeObjectFromConfig(configFile: string) {
   // File is JSON if it starts with {
   if (configFile.startsWith("{")) {
     const jsonObject = JSON.parse(configFile);
@@ -181,7 +168,20 @@ export function readUserThemeObjectFromConfig(customConfigPath?: string) {
 export function readUserThemeColorsFromConfig(customConfigPath?: string) {
   isValidFileExtension(customConfigPath!);
 
-  const themeObject = readUserThemeObjectFromConfig(customConfigPath);
+  const filePaths = [
+    "tailwind.config.js",
+    "tailwind.config.ts",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.json",
+  ];
+
+  const configFile = readUserConfig(
+    customConfigPath ? [customConfigPath] : filePaths,
+    "Could not locate Tailwind config file. If it is not in the root directory, or has been renamed, please provide a custom path with the -c flag",
+  );
+
+  const themeObject = readUserThemeObjectFromConfig(configFile);
 
   const overrideColors =
     themeObject.hasOwnProperty("colors") && themeObject.colors;

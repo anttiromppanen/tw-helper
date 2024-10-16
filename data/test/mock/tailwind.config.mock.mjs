@@ -1,4 +1,4 @@
-export default {
+module.exports = `export default {
   content: ["./src/**/*.{html,js}"],
   theme: {
     fontFamily: {
@@ -31,4 +31,4 @@ export default {
       },
     },
   },
-};
+};`;

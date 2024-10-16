@@ -1,4 +1,6 @@
-const config = {
+const mockConfig = `import { Config } from "tailwindcss";
+
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -34,4 +36,6 @@ const config = {
     "border-l-primaryLightGrey",
   ],
 };
-export default config;
+export default config;`;
+
+export default mockConfig;
