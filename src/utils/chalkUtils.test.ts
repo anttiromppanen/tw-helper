@@ -74,9 +74,6 @@ describe("convertColorToHex", () => {
     const result = convertColorToHex(unsupportedColor);
 
     expect(result).toBeNull();
-    expect(console.error).toHaveBeenCalledWith(
-      `\n${chalk.bold.red("Error:")} Unsupported color format detected: unsupported\n`,
-    );
   });
 });
 
@@ -119,6 +116,5 @@ describe("chalkTextFromColor", () => {
     const result = chalkTextFromColor(color, text);
 
     expect(result).toBe(chalk.gray(text));
-    expect(console.error).toHaveBeenCalled();
   });
 });

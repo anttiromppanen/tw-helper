@@ -1,6 +1,4 @@
 import chalk from "chalk";
-import { errorText } from "./textUtils";
-
 import Color from "color";
 
 /**
@@ -15,7 +13,6 @@ export function convertColorToHex(inputColor: string) {
     const colorAsHex = Color(inputColor);
     return colorAsHex.hex();
   } catch (error) {
-    errorText(`Unsupported color format detected: ${inputColor}`);
     return null;
   }
 }

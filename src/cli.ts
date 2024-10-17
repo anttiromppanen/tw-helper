@@ -13,7 +13,7 @@ function main() {
     .description(
       "A CLI tool providing useful helper functions for developers using Tailwind CSS",
     )
-    .version("1.0.0");
+    .version("1.0.5");
 
   program.addCommand(colorsCommand);
   program.addCommand(breakpointsCommand);
