@@ -1,4 +1,4 @@
-# Tailwind CSS helper
+# Tailwind CSS Helper
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/anttiromppanen/tw-helper/jest.yml)
 ![Codecov](https://img.shields.io/codecov/c/github/anttiromppanen/tw-helper)
