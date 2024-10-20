@@ -4,6 +4,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/anttiromppanen/tw-helper)
 
 ## Contents
+* [Motivation](#motivation)
 * [Usage](#usage)
 * [Commands](#commands)
   * [colors Command](#colors-command)
