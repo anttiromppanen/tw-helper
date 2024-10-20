@@ -29,6 +29,8 @@ npx tw-helper
 
 ### `colors` Command
 
+> **_NOTE:_**  24-bit True color for command line is required for the colors to show up correctly.
+
 The colors command allows you to list the colors on the Tailwind CSS project.
 
 **Syntax:**
