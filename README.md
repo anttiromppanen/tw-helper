@@ -116,10 +116,6 @@ tw-helper css opacity
 
 <br /> ![css command output](https://github.com/anttiromppanen/tw-helper/blob/main/static/img/css.png)
 
-## License
-
-This software is licensed under the [MIT](LICENSE)
-
 ## Contributing
 
 All contributions are welcome, please use the [Issues tracker](https://github.com/anttiromppanen/tw-helper/issues)
