@@ -125,4 +125,4 @@ tw-helper css opacity
 
 ## Contributing
 
-All contributions are welcome, please use the [Issues tracker](https://github.com/anttiromppanen/tw-helper/issues)
+All contributions are welcome, please read [how to contribute](CONTRIBUTING.md) fist.
