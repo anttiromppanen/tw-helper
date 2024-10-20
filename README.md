@@ -1,4 +1,4 @@
-# Tailwind-helper
+# Tailwind CSS helper
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/anttiromppanen/tw-helper/jest.yml)
 ![Codecov](https://img.shields.io/codecov/c/github/anttiromppanen/tw-helper)
@@ -6,7 +6,7 @@
 
 ## Motivation
 
-How many times you forgot what the helper classes for line-height were, or what the default breakpoints for Tailwind are? Tw-helper is a command-line tool that provides fast, and easy to use commands retrieving information on Tailwind, so you don't have to necessarily go browse documentation and lose focus!
+How many times you forgot what the helper classes for line-height were, or what the default breakpoints for Tailwind CSS are? Tw-helper is a command-line tool that provides fast, and easy to use commands retrieving information on Tailwind CSS, so you don't have to necessarily go browse documentation and lose focus!
 
 ## Usage
 
@@ -22,7 +22,7 @@ npx tw-helper
 
 ### `colors` Command
 
-The colors command allows you to list the colors on the Tailwind project.
+The colors command allows you to list the colors on the Tailwind CSS project.
 
 **Syntax:**
 
@@ -46,7 +46,7 @@ tw-helper colors [options]
 
 - -c, --config \<file>:
 
-  Use this flag to provide a custom Tailwind configuration file. The file should specify custom colors used in your project. This flag is only required, if the tailwind configuration file is renamed, or relocated from the project root.
+  Use this flag to provide a custom Tailwind CSS configuration file. The file should specify custom colors used in your project. This flag is only required, if the Tailwind CSS configuration file is renamed, or relocated from the project root.
 
   Example:
 
@@ -74,11 +74,11 @@ tw-helper colors -d
 
 ### `breakpoints` Command
 
-The breakpoints command allows you to list the breakpoints on the Tailwind project.
+The breakpoints command allows you to list the breakpoints on the Tailwind CSS project.
 
 - -c, --config \<file>:
 
-  Use this flag to provide a custom Tailwind configuration file. The file should specify custom colors used in your project. This flag is only required, if the tailwind configuration file is renamed, or relocated from the project root.
+  Use this flag to provide a custom Tailwind CSS configuration file. The file should specify custom colors used in your project. This flag is only required, if the Tailwind CSS configuration file is renamed, or relocated from the project root.
 
   Example:
 
@@ -96,7 +96,7 @@ tw-helper breakpoints
 
 ### `css` Command
 
-The css command allows you to list the Tailwind helper classes associated for the provided css property. Also provides a link to the Tailwind documentation for the given property.
+The css command allows you to list the Tailwind CSS helper classes associated for the provided css property. Also provides a link to the Tailwind CSS documentation for the given property.
 
 **Syntax:**
 
@@ -106,7 +106,7 @@ tw-helper css <property>
 
 **Property:**
 
-- Css property to list the Tailwind classes for.
+- Css property to list the Tailwind CSS classes for.
 
 <br /> **Example output:**
 
