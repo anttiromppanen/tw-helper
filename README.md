@@ -7,6 +7,15 @@
 
 How many times you forgot what the helper classes for line-height were, or what the default breakpoints for Tailwind CSS are? Tw-helper is a command-line tool that provides fast, and easy to use commands retrieving information on Tailwind CSS, so you don't have to necessarily go browse documentation and lose focus!
 
+## Contents
+* [Usage](#usage)
+* [Commands](#commands)
+  * [colors](#colors-command)
+  * [breakpoints](#breakpoints-command)
+  * [css](#css-command)
+* [Contributing](#contributing)
+
+
 ## Usage
 
 ```javascript
