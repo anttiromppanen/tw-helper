@@ -35,7 +35,7 @@ tw-helper colors [options]
 
 **Options:**
 
-- -d, --default:
+* -d, --default:
 
   Use this flag to list the default color palette from Tailwind CSS.
 
@@ -47,7 +47,7 @@ tw-helper colors [options]
 
   This command will print the default set of colors provided by Tailwind CSS.
 
-- -c, --config \<file>:
+* -c, --config \<file>:
 
   Use this flag to provide a custom Tailwind CSS configuration file. The file should specify custom colors used in your project. This flag is only required, if the Tailwind CSS configuration file is renamed, or relocated from the project root.
 
@@ -79,7 +79,7 @@ tw-helper colors -d
 
 The breakpoints command allows you to list the breakpoints on the Tailwind CSS project.
 
-- -c, --config \<file>:
+* -c, --config \<file>:
 
   Use this flag to provide a custom Tailwind CSS configuration file. The file should specify custom colors used in your project. This flag is only required, if the Tailwind CSS configuration file is renamed, or relocated from the project root.
 
@@ -109,7 +109,7 @@ tw-helper css <property>
 
 **Property:**
 
-- Css property to list the Tailwind CSS classes for.
+* Css property to list the Tailwind CSS classes for.
 
 <br /> **Example output:**
 
