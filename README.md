@@ -9,11 +9,6 @@ How many times you forgot what the helper classes for line-height were, or what 
 
 ## Contents
 * [Usage](#usage)
-* [Commands](#commands)
-  * [colors](#colors-command)
-  * [breakpoints](#breakpoints-command)
-  * [css](#css-command)
-* [Contributing](#contributing)
 
 
 ## Usage
