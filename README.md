@@ -1,4 +1,4 @@
-# CLI Tailwind CSS Helper [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# CLI helper for Tailwind CSS [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/anttiromppanen/tw-helper/jest.yml)
 ![Codecov](https://img.shields.io/codecov/c/github/anttiromppanen/tw-helper)
 ![GitHub last commit](https://img.shields.io/github/last-commit/anttiromppanen/tw-helper)
