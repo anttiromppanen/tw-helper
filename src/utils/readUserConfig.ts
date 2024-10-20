@@ -191,3 +191,35 @@ export function readUserThemeColorsFromConfig(customConfigPath?: string) {
 
   return { overrideColors, extendColors };
 }
+
+/**
+ * Read breakpoints from the Tailwind config file
+ * @param customConfigPath - Custom path to the Tailwind config file (optional)
+ * @returns Returns an object with extendObject and hasScreensObject
+ */
+
+export function readBreakpointsFromConfig(customConfigPath?: string) {
+  isValidFileExtension(customConfigPath!);
+
+  const filePaths = [
+    "tailwind.config.js",
+    "tailwind.config.ts",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.json",
+  ];
+
+  const configFile = readUserConfig(
+    customConfigPath ? [customConfigPath] : filePaths,
+    "Could not locate Tailwind config file. If it is not in the root directory, or has been renamed, please provide a custom path with the -c flag",
+  );
+
+  const themeObject = readUserThemeObjectFromConfig(configFile);
+
+  const extendObject =
+    themeObject.hasOwnProperty("extend") && themeObject.extend;
+
+  const hasScreensObject = extendObject.hasOwnProperty("screens");
+
+  return { extendObject, hasScreensObject };
+}

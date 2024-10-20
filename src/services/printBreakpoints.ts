@@ -2,7 +2,10 @@ import { TAILWIND_DEFAULT_BREAKPOINTS } from "../const/tailwindBreakpoints";
 import CliTable3 from "cli-table3";
 import chalk from "chalk";
 import printHeader from "../utils/textUtils";
-import { readUserThemeObjectFromConfig } from "../utils/readUserConfig";
+import {
+  readBreakpointsFromConfig,
+  readUserThemeObjectFromConfig,
+} from "../utils/readUserConfig";
 import {
   createTableFromKeyValueArray,
   tablesSideBySide,
@@ -16,10 +19,8 @@ import {
 
 function createTables(customConfigPath?: string) {
   // Check if extend.screens object exists in the user's theme
-  const themeObject = readUserThemeObjectFromConfig(customConfigPath);
-  const extendObject =
-    themeObject.hasOwnProperty("extend") && themeObject.extend;
-  const hasScreensObject = extendObject.hasOwnProperty("screens");
+  const { extendObject, hasScreensObject } =
+    readBreakpointsFromConfig(customConfigPath);
 
   // create default breakpoints table
   const defaultBreakpointsArray = Object.entries(TAILWIND_DEFAULT_BREAKPOINTS);
