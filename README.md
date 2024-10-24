@@ -127,4 +127,4 @@ tw-helper css opacity
 
 ## Contributing
 
-All contributions are welcome, please read [how to contribute](CONTRIBUTING.md) fist.
+All contributions are welcome, please read [how to contribute](CONTRIBUTING.md) first.
