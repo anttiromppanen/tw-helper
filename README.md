@@ -17,13 +17,28 @@ How many times you forgot what the helper classes for line-height were, or what 
 
 ## Usage
 
+**Option 1:** Use directly with npx
+```javascript
+npx tw-helper
+```
+
+**Option 2:** Install globally
+```javascript
+npm install -g tw-helper
+```
+
+**Option 3:** Install to project local scope
 ```javascript
 npm install tw-helper --save-dev
 ```
 
+Add tw-helper command to PATH variable
+
 ```javascript
-npx tw-helper
+export PATH=$PATH:./node_modules/.bin
 ```
+
+
 
 ## Commands
 
